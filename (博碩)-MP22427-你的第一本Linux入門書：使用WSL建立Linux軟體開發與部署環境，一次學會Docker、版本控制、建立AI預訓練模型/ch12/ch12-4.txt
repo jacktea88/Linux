@@ -1,0 +1,6 @@
+請依據下列Docker容器的描述，建立對應Dockerfile來產生客製化的PHP映像檔，描述如下所示：
+* 映像檔：php:7.2-apache
+* 維護者：hueyan
+* 指令：指定工作目錄/var/www/html/ 
+* 指令：複製專案www子目錄至工作目錄
+* 指令：埠號80
