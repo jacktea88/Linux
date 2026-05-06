@@ -2,7 +2,6 @@
 
 [https://hackmd.io/@MagicJackTing/BywNwqdTD](https://hackmd.io/@MagicJackTing/BywNwqdTD)
 
-![HackMD-neo-og.jpg](HackMD-neo-og.jpg)
 
 你可以在本機端產生金鑰, 然後將公鑰 (public key) 上傳到 server.
 
@@ -61,17 +60,43 @@ cat svr_xxx.pub | ssh user_name@host_name "mkdir ~/.ssh && cat >> ~/.ssh/authori
 
 `scp svr_xxx.pub user_name@host_name:~/.ssh/authorized_keys`
 
+修改遠端 linux 主機 sshd 的設定
+確認 sshd 的設定
+
 確認遠端 linux 主機的 sshd 設定:
 
-- 確認裡面有設定可用的公開金鑰檔名及位置:
-- 第一次設定請先略過**關閉密碼認證登入**, 直接重啟 `sshd`. 等確定可以用私鑰連線之後再進行.
-- 如果沒有修改 `sshd_config` 的設定, 就不需要重啟 `sshd`.
+$ sudo vi /etc/ssh/sshd_config
 
-我們甚至也可以設定**關閉**密碼認證登入, 只允許金鑰認證
+    確認設定檔裡有開啟金鑰認證登入
 
-上面**關閉密碼認證登入**的動作請在確認可以用私鑰成功登入主機之後再進行.
+    PubkeyAuthentication yes
+
+    確認裡面有設定可用的公開金鑰檔名及位置:
+
+    AuthorizedKeysFile  .ssh/authorized_keys
+
+    第一次設定請先略過關閉密碼認證登入, 直接重啟 sshd. 等確定可以用私鑰連線之後再進行.
+    如果沒有修改 sshd_config 的設定, 就不需要重啟 sshd.
+
+關閉密碼認證登入
+
+我們甚至也可以設定關閉密碼認證登入, 只允許金鑰認證
+
+PasswordAuthentication no
+PubkeyAuthentication yes
+
+上面關閉密碼認證登入的動作請在確認可以用私鑰成功登入主機之後再進行.
+重啟 sshd
 
 設定修改完成之後, 重啟 sshd.
+
+    RHEL/CentOS 用戶請用以下指令
+
+    $ sudo sysemctl restart sshd
+
+    Ubuntu 用戶
+
+    $ sudo sysemctl restart ssh
 
 ssh 連線時指定私鑰檔.
 
