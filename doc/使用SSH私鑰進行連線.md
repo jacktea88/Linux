@@ -59,12 +59,19 @@ cat svr_xxx.pub | ssh user_name@host_name "mkdir ~/.ssh && cat >> ~/.ssh/authori
 第一次設定也可以用 `scp` 指令, (上面的作法用於 `authorized_keys` 裡已經有其他內容了, 使用 `scp` 指令會把原有的內容覆蓋掉了)
 
 `scp svr_xxx.pub user_name@host_name:~/.ssh/authorized_keys`
+例如root帳號
+`scp svr_xxx.pub root@host_name:~/.ssh/authorized_keys`
+
+#### 在linux主機COPY authorized_keys 
+在linux主機使用root帳號來copy其他帳號的/.ssh/authorized_keys到root帳號底下的/.ssh/authorized_keys
+先到root的/.ssh目錄
+`cp ~jack/.ssh/authorized_keys authorized_keys`
+
 
 修改遠端 linux 主機 sshd 的設定
-確認 sshd 的設定
-
 確認遠端 linux 主機的 sshd 設定:
 
+##### 注意檔名是sshd_config，有一個'd'
 $ sudo vi /etc/ssh/sshd_config
 
     確認設定檔裡有開啟金鑰認證登入
@@ -110,8 +117,17 @@ ssh 連線時指定私鑰檔.
 - `User`: 則指定連線這部主機時用什麼用戶帳號
 - `Port`: 指定這部主機的 SSH port 號碼.
 - `HostName`: 則是輸入 DNS 域名, 或者直接輸入 ip 地址 (如果沒有 DNS 可以幫你 name 轉 ip 時. 例如: 區域網路 (LAN) 中的主機或者自己肚子裡的 VM).
-- `IdentityFile`: 指定私鑰檔 (private key) 的位置.
+- `IdentityFile`: 指定私鑰檔 (private key) 的位置和檔案名稱.
 
 設定二組**代號**是方便我們用主機名字 (host_name) 或 ip address (192.168.33.10) 都可以自動使用私鑰
 
 使用 `putty` 或者其他軟體 `mobaXterm` 都有類似的設定, 請自行類推.
+
+### Windows系統設定
+#### 設定檔路徑
+C:\Users\USER\.ssh\config
+#### 設定內容
+Host vm-linux24-root
+  HostName 192.168.85.128
+  User root
+  IdentityFile ~/.ssh/id_rsa
