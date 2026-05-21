@@ -94,6 +94,7 @@
     *   `sudo chpasswd`：大量修改使用者密碼。
 *   **權限變更：**
     *   `chmod`：變更權限（支援符號模式如 `u+x` 或數字模式如 `755`）。
+        chmod 777 (file or folder)
     *   `chown`：變更檔案擁有者與群組。
     *   `chgrp`：變更檔案擁有群組。
     *   `setfacl` / `getfacl`：設定與查看存取控制列表 (ACL)。
