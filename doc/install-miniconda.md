@@ -47,13 +47,23 @@ jupyter notebook --generate-config
 
 修改設定：
 
-c.ServerApp.token =''  (免token登入)
+c.ServerApp.token =''  (免token登入, 註：兩個單引號，中間是空的字元)
 
 c.ServerApp.ip ='0.0.0.0' (可遠端登入)
 
 jupyter notebook --ip=0.0.0.0 --port=8888 --no-browser
 
-# Flask
+#### 在vscode執行jupyter notebook
+
+一、使用ssh連線
+
+二、右上角選conda執行環境
+
+python環境->建立python環境->輸入解譯器路徑：
+
+miniconda3/envs/{conda環境名稱}/bin/python
+
+# Flask(無法遠端連線)
 
 ## 開發環境建立
 
@@ -65,6 +75,8 @@ pip install flask
 
 python3 -m flask run
 
-**python manage.py runserver **0.0**.**0.0**:**8000
-
 無法遠端連線
+
+# Django(可遠端連線)
+
+python manage.py runserver **0.0**.**0.0**:8000
