@@ -1,0 +1,9 @@
+n1=$1
+n2=$2
+echo n1 = $n1
+echo n2 = $n2
+if  test  $n1  -gt  $n2;then
+echo  “$n1  is  bigger”
+else
+echo  “$n2  is  bigger”
+fi
