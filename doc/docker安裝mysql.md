@@ -1,16 +1,23 @@
+---
 
 ------------------------------
-## Docker 部署 MySQL Server 指令集 (Ubuntu)## 1. 安裝 Docker (若尚未安裝)
+## Docker 部署 MySQL Server 指令集 (Ubuntu)
+## 1. 安裝 Docker (若尚未安裝)
 
+### 記得做
 sudo apt update
-
+### 搜尋：docker ubuntu install
+### 網址：
+https://docs.docker.com/engine/install/ubuntu/
 
 ## 2. 下載 MySQL 官方映像檔
 
 # 下載最新版本
+
 sudo docker pull mysql:latest
 
 ## 3. 啟動 MySQL 容器 (基本版)
+
 此指令會啟動一個名為 mysql-server 的容器，並將容器的 3306 埠對應到主機的 3306 埠。
 
 sudo docker run --name mysql-server \
@@ -19,6 +26,7 @@ sudo docker run --name mysql-server \
   -d mysql:latest
 
 ## 4. 啟動 MySQL 容器 (進階持久化版)
+
 強烈建議： 使用 -v 掛載主機目錄，避免容器刪除時資料遺失。
 
 sudo docker run --name mysql-server \
@@ -46,17 +54,21 @@ sudo docker start mysql-server
 
 sudo docker logs mysql-server
 
-# 使用 Docker Compose 
+# 使用 Docker Compose
+
 好處是可以用一個設定檔 (.yaml) 管理所有參數，之後只需一行指令就能啟動或停止，非常適合長期維運。
 
 以下是建置步驟：
+
 ## 1. 建立專案目錄
+
 先建立一個資料夾來存放設定檔：
 
 mkdir mysql-docker
 cd mysql-docker
 
 ## 2. 建立 docker-compose.yml
+
 使用你喜歡的編輯器（如 nano 或 vim）建立檔案：
 
 nano docker-compose.yml
@@ -74,7 +86,7 @@ services:
       MYSQL_USER: user
       MYSQL_PASSWORD: user_password
     ports:
-      - "3306:3306"
+      - "8888:3306"
     volumes:
       - ./mysql_data:/var/lib/mysql
   phpmyadmin:
@@ -85,18 +97,22 @@ services:
       - db
     environment:
       PMA_HOST: db
-      PMA_PORT: 3306
+      PMA_PORT: 8888
       PMA_ARBITRARY: 1
     ports:
       - "8080:80"
 
 ## 3. 啟動服務
+
 在該目錄下執行：
 
 sudo docker compose up -d
+
 * -d 表示在背景執行
 
-MySQL 位址： localhost:3306phpMyAdmin 
+MySQL 位址： localhost:8888
+
+phpMyAdmin
 網頁介面： 開啟瀏覽器輸入 http://localhost:8080
 伺服器(Server)： db (或是填入 MySQL 容器名稱)
 帳號： root
@@ -109,9 +125,36 @@ MySQL 位址： localhost:3306phpMyAdmin
 * 查看日誌： sudo docker compose logs -f
 * 進入資料庫： sudo docker exec -it mysql-server mysql -u root -p
 
+### 常用操作指令
+* 啟動docker：sudo systemctl start docker
+* 停止docker：sudo systemctl stop docker
+* 重啟docker：sudo systemctl restart docker
+* 查看docker狀態：sudo systemctl status docker
+* 查看docker日誌：sudo journalctl -u docker
+
+### 映像檔管理指令
+* 刪除映像檔：sudo docker rmi <image_id>
+* 刪除映像檔：sudo docker rm 映像檔名稱[:tag]
+* 列出映像檔：sudo docker images
+
+### 容器管理指令
+* 列出所有容器：sudo docker ps -a
+* 停止容器：sudo docker stop <container_id>
+* 啟動容器：sudo docker start <container_id>
+* 刪除容器：sudo docker rm <container_id>
+* 列出容器：sudo docker ps
+* 啟動容器：sudo docker run -d -p 3306:3306 --name mysql-server mysql:latest
+
+### 其他指令
+* 查看Docker版本：sudo docker version
+* 查看Docker狀態：sudo docker info
+* 查看Docker服務狀態：sudo systemctl status docker
+* 查看Docker日誌：sudo journalctl -u docker
+* 查看Docker網路狀態：sudo docker network ls
+* 查看Docker儲存區狀態：sudo docker volume ls
+
+
+
 ------------------------------
 提示：
 使用 Docker Compose 時，資料會自動存放在當前目錄下的 mysql_data 資料夾內，方便備份與移植。
-
-
-
