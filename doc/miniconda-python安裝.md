@@ -2,7 +2,9 @@
 
 ## 安裝miniconda
 
-wget https://repo.anaconda.com/miniconda/Miniconda3-1atest-Linux-x86_64.64.sh
+**注意：以官網最新的網址為準**
+
+wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
 
 bash Miniconda3-1atest-Linux-x86_64.64.sh
 
@@ -47,11 +49,11 @@ jupyter notebook --generate-config
 
 修改設定：
 
-c.ServerApp.token =''  
+c.ServerApp.token =''
 
 #(免token登入, 註：兩個單引號，中間是空的字元)
 
-c.ServerApp.ip ='0.0.0.0' 
+c.ServerApp.ip ='0.0.0.0'
 
 #(可遠端登入)
 
