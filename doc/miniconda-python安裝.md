@@ -8,13 +8,13 @@ wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
 
 bash Miniconda3-1atest-Linux-x86_64.64.sh
 
-## 新增Miniconda環境變數(手動設定)
+## 新增Miniconda環境變數(手動設定, 若選自動設定，此步不用做)
 
 nano ~/.bashrc
 
 export PATH=/home/your-user-name/miniconda3/bin:$PATH
 
-## 讓環境變數配置生效
+## 讓環境變數配置生效(記得要執行)
 
 source ~/.bashrc
 
@@ -88,3 +88,7 @@ python3 -m flask run
 # Django(可遠端連線)
 
 python manage.py runserver **0.0**.**0.0**:8000
+
+# Node.js 安裝
+sudo apt install nodejs
+sudo apt install npm

@@ -8,7 +8,12 @@
 4.  如何將目錄 `~/test` 及其內容強制刪除且不彈出確認視窗？
 5.  在不進入編輯器的情況下，如何快速建立一個名為 `empty.txt` 的空檔案？
 
-
+**解答：**
+1.  使用 `mkdir -p ~/test/level1/level2`。
+2.  執行 `cat -b /etc/passwd` 或 `nl /etc/passwd`。
+3.  使用 `cp -p /etc/passwd /tmp/` 或 `cp -a /etc/passwd /tmp/`。
+4.  執行 `rm -rf ~/test`。
+5.  執行 `touch empty.txt`。
 
 ---
 
@@ -21,7 +26,12 @@
 4.  如何將使用者 `u3` 加入到 `student` 這個次要群組中？
 5.  如何設定一個目錄具有 **Sticky Bit (SBIT)** 權限，讓使用者只能刪除自己建立的檔案？
 
-
+**解答：**
+1.  執行 `sudo useradd -m -s /bin/bash student1`。
+2.  執行 `chmod 754 report.txt` (7=rwx, 5=rx, 4=r)。
+3.  執行 `sudo chown -R tony:users /data`。
+4.  執行 `sudo usermod -G student u3`。
+5.  執行 `chmod 1777 目錄名稱` 或 `chmod o+t 目錄名稱`。
 
 ---
 
@@ -34,6 +44,12 @@
 4.  如何將 `ls -l /etc` 的前 10 行結果顯示出來？
 5.  如何同時將指令執行結果輸出到螢幕並存入 `output.log` 檔案？
 
+**解答：**
+1.  執行 `ls -l >> file_list.txt`。
+2.  執行 `cat nofile 2> /dev/null`。
+3.  執行 `grep 'root' /etc/passwd`。
+4.  執行 `ls -l /etc | head -n 10`。
+5.  使用管線搭配 `tee` 指令：`command | tee output.log`。
 
 ---
 
@@ -46,3 +62,16 @@
 4.  如何撰寫一個簡單的 Shell Script 段落，判斷變數 `n1` 是否大於 `n2`？
 5.  如何在 `vi` 編輯器中顯示行號？
 
+**解答：**
+1.  執行 `df -h` 或 `df -Th`。
+2.  執行 `kill -9 1234`。
+3.  執行 `tar -zcvf /backup/home_bck.tar.gz /home`。
+4.  腳本內容如下：
+    ```bash
+    if [ $n1 -gt $n2 ]; then
+        echo "$n1 is bigger"
+    else
+        echo "$n2 is bigger"
+    fi
+    ```
+5.  在指令列模式輸入 `:set nu`。

@@ -30,7 +30,7 @@ sudo docker run --name mysql-server \
 
 sudo docker run --name mysql-server \
   -e MYSQL_ROOT_PASSWORD=你的密碼 \
-  -v /home/user/mysql_data:/var/lib/mysql \
+  -v /home/jack/mysql_data:/var/lib/mysql \
   -p 8888:3306 \
   -d mysql:latest
 
@@ -182,3 +182,14 @@ docker run --name websrv -d -p 9090:80 nginx
 docker exec -it websrv bash
 docker cp index.html websrv:/usr/share/nginx/html
 ---
+
+# push to hub 流程
+docker ps
+docker commit websrv myimage:latest
+docker images
+docker tag myimage:latest jacktea88/myimage:latest
+docker login
+docker push jacktea88/myimage:latest
+docker rmi jacktea88/myimage:latest
+docker run --name websrv-hub -p 9595:80 jacktea88/myimage:latest
+
