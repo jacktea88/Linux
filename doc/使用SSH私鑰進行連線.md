@@ -2,7 +2,6 @@
 
 [https://hackmd.io/@MagicJackTing/BywNwqdTD](https://hackmd.io/@MagicJackTing/BywNwqdTD)
 
-
 你可以在本機端產生金鑰, 然後將公鑰 (public key) 上傳到 server.
 
 或者也可倒著做, 在 server 產生金鑰, 將私鑰 (private key) 下載下來, 並刪掉 server 上的私鑰.
@@ -62,16 +61,17 @@ cat svr_xxx.pub | ssh user_name@host_name "mkdir ~/.ssh && cat >> ~/.ssh/authori
 例如root帳號
 `scp svr_xxx.pub root@host_name:~/.ssh/authorized_keys`
 
-#### 在linux主機COPY authorized_keys 
+#### 在linux主機COPY authorized_keys
+
 在linux主機使用root帳號來copy其他帳號的/.ssh/authorized_keys到root帳號底下的/.ssh/authorized_keys
 先到root的/.ssh目錄
 `cp ~jack/.ssh/authorized_keys authorized_keys`
-
 
 修改遠端 linux 主機 sshd 的設定
 確認遠端 linux 主機的 sshd 設定:
 
 ##### 注意檔名是sshd_config，有一個'd'
+
 $ sudo vi /etc/ssh/sshd_config
 
     確認設定檔裡有開啟金鑰認證登入
@@ -85,15 +85,15 @@ $ sudo vi /etc/ssh/sshd_config
     第一次設定請先略過關閉密碼認證登入, 直接重啟 sshd. 等確定可以用私鑰連線之後再進行.
     如果沒有修改 sshd_config 的設定, 就不需要重啟 sshd.
 
-關閉密碼認證登入
+#### 關閉密碼認證登入
 
 我們甚至也可以設定關閉密碼認證登入, 只允許金鑰認證
 
 PasswordAuthentication no
 PubkeyAuthentication yes
 
-上面關閉密碼認證登入的動作請在確認可以用私鑰成功登入主機之後再進行.
-重啟 sshd
+#### 上面關閉密碼認證登入的動作請在確認可以用私鑰成功登入主機之後再進行.
+**重啟 sshd**
 
 設定修改完成之後, 重啟 sshd.
 
@@ -124,9 +124,13 @@ ssh 連線時指定私鑰檔.
 使用 `putty` 或者其他軟體 `mobaXterm` 都有類似的設定, 請自行類推.
 
 ### Windows系統設定
+
 #### 設定檔路徑
+
 C:\Users\USER\.ssh\config
+
 #### 設定內容
+
 Host vm-linux24-root
   HostName 192.168.85.128
   User root
