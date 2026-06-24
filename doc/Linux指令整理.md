@@ -5,9 +5,9 @@
   * `ls_release -a`：查看發行版詳細資訊。
   * `hostnamectl`：查看主機名稱與系統相關資訊。
 * **linux目錄結構**
-  ![目錄結構](image/image0.png)
-  ![重要目錄說明](image/image.png)
-  ![架構關係](image/image-1.png)
+  ![目錄結構](pic/image0.png)
+  ![重要目錄說明](pic/image.png)
+  ![架構關係](pic/image-1.png)
 
 ### **第二章：系統基本操作**
 
