@@ -1,4 +1,4 @@
-# 如何使用 SSH 私鑰進行 ssh 連線 - HackMD
+# 如何使用 SSH 私鑰進行 ssh 連線
 
 [https://hackmd.io/@MagicJackTing/BywNwqdTD](https://hackmd.io/@MagicJackTing/BywNwqdTD)
 
@@ -6,7 +6,21 @@
 
 或者也可倒著做, 在 server 產生金鑰, 將私鑰 (private key) 下載下來, 並刪掉 server 上的私鑰.
 
-下面是在本機產生金鑰. 在主機產生金鑰請自行腦補.
+下面是在local本機產生金鑰. 在遠端主機產生金鑰請自行腦補.
+
+
+### Linux安裝 OpenSSH Server
+
+sudo apt install openssh-server -y
+
+#### SSH 狀態、啟動
+
+sudo systemctl status ssh
+
+sudo systemctl start ssh
+
+sudo systemctl enable ssh
+
 
 ### 建立金鑰
 
@@ -93,6 +107,7 @@ PasswordAuthentication no
 PubkeyAuthentication yes
 
 #### 上面關閉密碼認證登入的動作請在確認可以用私鑰成功登入主機之後再進行.
+
 **重啟 sshd**
 
 設定修改完成之後, 重啟 sshd.
