@@ -73,8 +73,11 @@ python manage.py createsuperuser
 python manage.py shell
 ```
 
-## 10. 匯出需求套件
+## 10. 匯出匯入需求套件
 
 ``` bash
 pip freeze > requirements.txt
+```
+``` bash
+pip install -r requirements.txt
 ```

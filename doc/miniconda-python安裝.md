@@ -2,11 +2,11 @@
 
 ## 安裝miniconda
 
-**注意：以官網最新的網址為準**
+**注意：下載連結以官網最新的網址為準**
 
 wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
 
-bash Miniconda3-1atest-Linux-x86_64.64.sh
+bash Miniconda3-latest-Linux-x86_64.64.sh
 
 ## 新增Miniconda環境變數(手動設定, 若選自動設定，此步不用做)
 
@@ -14,7 +14,7 @@ nano ~/.bashrc
 
 export PATH=/home/your-user-name/miniconda3/bin:$PATH
 
-## 讓環境變數配置生效(記得要執行)
+## 讓環境變數配置生效(記得要執行, 須出現(base))
 
 source ~/.bashrc
 
@@ -86,9 +86,23 @@ python3 -m flask run
 無法遠端連線
 
 # Django(可遠端連線)
+## 如果要用到mysql，須另安裝相關依賴套件
+sudo apt update
 
-python manage.py runserver **0.0**.**0.0**:8000
+sudo apt install \
+pkg-config \
+default-libmysqlclient-dev \
+build-essential \
+python3-dev
+
+## 安裝其他requirement
+pip install -r requirements.txt
+
+## 啟動server
+* 注意：setting的SQL HOST要改成127.0.0.1 
+python manage.py runserver 0.0.0.0:8000
 
 # Node.js 安裝
 sudo apt install nodejs
 sudo apt install npm
+
