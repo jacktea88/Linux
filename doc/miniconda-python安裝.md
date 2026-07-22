@@ -47,7 +47,7 @@ jupyter notebook --generate-config
 
 檔案位置：~/.jupyter/jupyter_notebook_config.py
 
-修改設定：
+修改設定：(注意：設定項目前面不能有空格)
 
 c.ServerApp.token =''
 
@@ -97,6 +97,8 @@ python3-dev
 
 ## 安裝其他requirement
 pip install -r requirements.txt
+### save to requirements.txt
+pip freeze > requirements.txt
 
 ## 啟動server
 * 注意：setting的SQL HOST要改成127.0.0.1 
