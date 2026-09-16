@@ -4,6 +4,7 @@
 
   * `ls_release -a`：查看發行版詳細資訊。
   * `hostnamectl`：查看主機名稱與系統相關資訊。
+  * `hostname -I`：查看主機IP位址。
 * **linux目錄結構**
   ![目錄結構](pic/image0.png)
   ![重要目錄說明](pic/image.png)
