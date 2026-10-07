@@ -8,7 +8,6 @@
 
 下面是在local本機產生金鑰. 在遠端主機產生金鑰請自行腦補.
 
-
 ### Linux安裝 OpenSSH Server
 
 sudo apt install openssh-server -y
@@ -21,19 +20,18 @@ sudo systemctl start ssh
 
 sudo systemctl enable ssh
 
-
 ### 建立金鑰
 
 先在本機端使用 `ssh-keygen` 指令建立金鑰 (`open-ssh` 套件, win10 裡應該有):
 
-請依照指令提示輸入要建立的金鑰檔名 (`ssh-keygen` 會將金鑰建立在當前目前目錄下. 或直接按 Enter 也行, 檔名及位置則如提示)：
+請依照指令提示輸入要建立的金鑰檔名 (`ssh-keygen` 會將金鑰建立在當前目前目錄下. 或**直接按 Enter 也行**, 檔名及位置則如提示)：
 
 ```
 Generating public/private rsa key pair.
 Enter file in which to save the key (C:\Users\user001/.ssh/id_rsa):
 ```
 
-輸入**保護私鑰**用的密碼, 直接按 Enter 表示私鑰檔不加密.
+輸入**保護私鑰**用的密碼, **直接按 Enter **表示私鑰檔不加密.
 
 ```
 Enter passphrase (empty for no passphrase):
@@ -62,6 +60,12 @@ The key's randomart image is:
 ```
 
 此時會產生二個檔案, 一個公鑰 (`"svr_xxx.pub"`) 另一個是私鑰 (`"svr_xxx"`), 如果輸入的檔名是 `svr_xxx`.
+
+### 傳送金鑰
+
+ **主要是將xxx.pub檔傳送到逺端要登入的主機並改檔名為authorized_keys**
+
+**如果有多個帳號要使用金鑰登入，每個帳號家目錄都要建立.ssh的資料夾並copy金鑰檔案authorized_keys**
 
 可以使用下列指令一氣呵成: 登入 linux 主機, 並將自己的公鑰上傳到主機上的正確位置上. (請將 `svr_xxx.pub`, `host_name` 以及 `user_name` 改成自己的公鑰檔名, linux 主機名稱 (或者是 ip) 及登入的帳號):
 
