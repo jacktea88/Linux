@@ -22,7 +22,7 @@ sudo systemctl enable ssh
 
 ### 建立金鑰
 
-先在本機端使用 `ssh-keygen` 指令建立金鑰 (`open-ssh` 套件, win10 裡應該有):
+先在本機端**(注意：是在windows主機)**在終端機視窗，使用 `ssh-keygen` 指令建立金鑰 (`open-ssh` 套件, win10 裡應該有):
 
 請依照指令提示輸入要建立的金鑰檔名 (`ssh-keygen` 會將金鑰建立在當前目前目錄下. 或**直接按 Enter 也行**, 檔名及位置則如提示)：
 
