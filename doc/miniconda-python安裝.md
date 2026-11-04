@@ -39,7 +39,7 @@ pip install keras-nlp (檔案較大須先安裝)
 
 ## 啟動jupyter notebook
 
-### 建立設定檔
+### 建立設定檔(run指令才會出現設定檔)
 
 jupyter notebook --generate-config
 
@@ -86,25 +86,31 @@ python3 -m flask run
 無法遠端連線
 
 # Django(可遠端連線)
+
 ## 如果要用到mysql，須另安裝相關依賴套件
+
 sudo apt update
 
-sudo apt install \
-pkg-config \
-default-libmysqlclient-dev \
-build-essential \
+sudo apt install 
+pkg-config 
+default-libmysqlclient-dev 
+build-essential 
 python3-dev
 
 ## 安裝其他requirement
+
 pip install -r requirements.txt
+
 ### save to requirements.txt
+
 pip freeze > requirements.txt
 
 ## 啟動server
-* 注意：setting的SQL HOST要改成127.0.0.1 
-python manage.py runserver 0.0.0.0:8000
+
+* 注意：setting的SQL HOST要改成127.0.0.1
+  python manage.py runserver 0.0.0.0:8000
 
 # Node.js 安裝
+
 sudo apt install nodejs
 sudo apt install npm
-
